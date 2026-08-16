@@ -40,6 +40,20 @@ header {
     color: #7057ff;
 }
 
+.header-right {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+#userEmail {
+    color: #8f96ae;
+
+    font-size: 14px;
+}
+
 header button {
     background: #171c31;
 
@@ -104,12 +118,53 @@ h1 {
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fill, minmax(260px, 1fr));
+        repeat(auto-fill, minmax(270px, 1fr));
 
     gap: 20px;
 }
 
-.empty {
+.project-card {
+    padding: 25px;
+
+    border: 1px solid #20253d;
+
+    border-radius: 16px;
+
+    background: #11162a;
+}
+
+.project-card h2 {
+    margin-bottom: 12px;
+}
+
+.project-status {
+    color: #9298af;
+
+    margin-bottom: 20px;
+}
+
+.project-card button {
+    padding: 10px 16px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background: #7057ff;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.delete-button {
+    background: #252a40 !important;
+
+    margin-left: 8px;
+}
+
+.empty,
+.loading {
     grid-column: 1 / -1;
 
     text-align: center;
@@ -121,6 +176,8 @@ h1 {
     border-radius: 18px;
 
     background: #10152a;
+
+    color: #9298af;
 }
 
 .empty-icon {
@@ -130,16 +187,16 @@ h1 {
 }
 
 .empty h2 {
+    color: white;
+
     margin-bottom: 10px;
 }
 
 .empty p {
-    color: #9298af;
-
     margin-bottom: 25px;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
 
     .dashboard-title {
         align-items: flex-start;
@@ -147,6 +204,10 @@ h1 {
         flex-direction: column;
 
         gap: 20px;
+    }
+
+    .header-right span {
+        display: none;
     }
 
 }
