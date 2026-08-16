@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MyHost Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        My<span>Host</span>
+    </div>
+
+    <button onclick="logout()">
+        Logout
+    </button>
+
+</header>
+
+
+<main>
+
+    <div class="dashboard-title">
+
+        <div>
+            <p class="small">Dashboard</p>
+
+            <h1>
+                Your Websites
+            </h1>
+        </div>
+
+        <button
+            class="create"
+            onclick="createWebsite()"
+        >
+            + Create Website
+        </button>
+
+    </div>
+
+
+    <div
+        id="projects"
+        class="projects"
+    >
+
+        <div class="empty">
+
+            <div class="empty-icon">
+                🌐
+            </div>
+
+            <h2>
+                No websites yet
+            </h2>
+
+            <p>
+                Create your first website to get started.
+            </p>
+
+            <button
+                class="create"
+                onclick="createWebsite()"
+            >
+                Create Website
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>
