@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MyHost</title>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MyHost - Free Website Hosting</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -18,8 +25,18 @@
     </div>
 
     <div class="nav-buttons">
-        <button onclick="login()">Login</button>
-        <button class="primary" onclick="signup()">Get Started</button>
+
+        <button onclick="goLogin()">
+            Login
+        </button>
+
+        <button
+            class="primary"
+            onclick="goSignup()"
+        >
+            Get Started
+        </button>
+
     </div>
 
 </header>
@@ -36,22 +53,29 @@
         </div>
 
         <h1>
-            Build your website.
+            Build it.
             <span>Publish it.</span>
         </h1>
 
         <p>
-            Create HTML, CSS and JavaScript websites directly
-            in your browser and publish them to the web.
+            Create HTML, CSS and JavaScript websites
+            directly in your browser and publish them
+            to the internet.
         </p>
 
         <div class="hero-buttons">
 
-            <button class="primary big" onclick="signup()">
+            <button
+                class="primary big"
+                onclick="goSignup()"
+            >
                 Create Your Website
             </button>
 
-            <button class="secondary big" onclick="learnMore()">
+            <button
+                class="secondary big"
+                onclick="learnMore()"
+            >
                 Learn More
             </button>
 
@@ -62,34 +86,63 @@
 </section>
 
 
-<section class="features">
+<section class="features" id="features">
 
-    <h2>Everything you need</h2>
+    <h2>
+        Everything you need
+    </h2>
 
     <div class="feature-grid">
 
         <div class="feature">
-            <div class="icon">📝</div>
-            <h3>Code Editor</h3>
+
+            <div class="icon">
+                📝
+            </div>
+
+            <h3>
+                Code Editor
+            </h3>
+
             <p>
-                Write HTML, CSS and JavaScript in your browser.
+                Write HTML, CSS and JavaScript
+                directly in your browser.
             </p>
+
         </div>
 
+
         <div class="feature">
-            <div class="icon">👀</div>
-            <h3>Live Preview</h3>
+
+            <div class="icon">
+                👀
+            </div>
+
+            <h3>
+                Live Preview
+            </h3>
+
             <p>
                 See your website while you're building it.
             </p>
+
         </div>
 
+
         <div class="feature">
-            <div class="icon">🚀</div>
-            <h3>Publish</h3>
+
+            <div class="icon">
+                🚀
+            </div>
+
+            <h3>
+                Publish
+            </h3>
+
             <p>
                 Publish your website to the internet.
             </p>
+
         </div>
 
     </div>
@@ -104,7 +157,12 @@
 </footer>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase.js"></script>
+
 <script src="app.js"></script>
 
 </body>
+
 </html>
