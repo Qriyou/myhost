@@ -10,9 +10,12 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>MyHost Dashboard</title>
+    <title>Dashboard - MyHost</title>
 
-    <link rel="stylesheet" href="dashboard.css">
+    <link
+        rel="stylesheet"
+        href="dashboard.css"
+    >
 
 </head>
 
@@ -24,9 +27,15 @@
         My<span>Host</span>
     </div>
 
-    <button onclick="logout()">
-        Logout
-    </button>
+    <div class="header-right">
+
+        <span id="userEmail"></span>
+
+        <button onclick="logout()">
+            Logout
+        </button>
+
+    </div>
 
 </header>
 
@@ -36,12 +45,17 @@
     <div class="dashboard-title">
 
         <div>
-            <p class="small">Dashboard</p>
+
+            <p class="small">
+                Dashboard
+            </p>
 
             <h1>
                 Your Websites
             </h1>
+
         </div>
+
 
         <button
             class="create"
@@ -58,27 +72,8 @@
         class="projects"
     >
 
-        <div class="empty">
-
-            <div class="empty-icon">
-                🌐
-            </div>
-
-            <h2>
-                No websites yet
-            </h2>
-
-            <p>
-                Create your first website to get started.
-            </p>
-
-            <button
-                class="create"
-                onclick="createWebsite()"
-            >
-                Create Website
-            </button>
-
+        <div class="loading">
+            Loading websites...
         </div>
 
     </div>
@@ -86,7 +81,12 @@
 </main>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase.js"></script>
+
 <script src="dashboard.js"></script>
 
 </body>
+
 </html>
