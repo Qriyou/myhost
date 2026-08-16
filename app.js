@@ -1,13 +1,15 @@
-function signup() {
-    alert("Signup will be connected to Supabase soon!");
+function goSignup() {
+    window.location.href = "signup.html";
 }
 
-function login() {
-    alert("Login will be connected to Supabase soon!");
+function goLogin() {
+    window.location.href = "login.html";
 }
 
 function learnMore() {
-    document.querySelector(".features").scrollIntoView({
-        behavior: "smooth"
-    });
+    document
+        .getElementById("features")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
 }
