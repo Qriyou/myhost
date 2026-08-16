@@ -21,8 +21,6 @@ body {
     padding: 0 7%;
 
     border-bottom: 1px solid #20253d;
-
-    background: rgba(8, 11, 24, 0.9);
 }
 
 .logo {
@@ -31,25 +29,25 @@ body {
 }
 
 .logo span {
-    color: #7c5cff;
+    color: #7057ff;
 }
 
 .nav-buttons {
     display: flex;
-    gap: 12px;
+    gap: 10px;
 }
 
 button {
-    border: none;
+    border: 0;
     cursor: pointer;
 
     padding: 11px 18px;
 
     border-radius: 10px;
 
-    background: transparent;
-
     color: white;
+
+    background: transparent;
 
     font-size: 15px;
 }
@@ -59,7 +57,7 @@ button {
 }
 
 .primary:hover {
-    background: #816cff;
+    background: #806cff;
 }
 
 .secondary {
@@ -91,21 +89,21 @@ button {
 
     background: #161b31;
 
-    color: #a99cff;
+    color: #aaa0ff;
 
     margin-bottom: 25px;
 }
 
 h1 {
-    font-size: clamp(45px, 7vw, 80px);
+    font-size: clamp(50px, 8vw, 85px);
 
-    line-height: 1.05;
+    line-height: 1;
 
     margin-bottom: 25px;
 }
 
 h1 span {
-    color: #7c5cff;
+    color: #7057ff;
 }
 
 .hero p {
@@ -132,12 +130,10 @@ h1 span {
 
 .big {
     padding: 15px 25px;
-
-    font-size: 16px;
 }
 
 .features {
-    padding: 80px 7%;
+    padding: 90px 7%;
 
     text-align: center;
 
@@ -205,10 +201,6 @@ footer {
 
     .hero-buttons {
         flex-direction: column;
-    }
-
-    .nav-buttons button:first-child {
-        display: none;
     }
 
 }
