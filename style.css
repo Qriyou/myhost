@@ -1,0 +1,214 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #080b18;
+    color: white;
+    min-height: 100vh;
+}
+
+.navbar {
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    border-bottom: 1px solid #20253d;
+
+    background: rgba(8, 11, 24, 0.9);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #7c5cff;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+
+    padding: 11px 18px;
+
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 15px;
+}
+
+.primary {
+    background: #7057ff;
+}
+
+.primary:hover {
+    background: #816cff;
+}
+
+.secondary {
+    background: #191e33;
+}
+
+.hero {
+    min-height: 650px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 60px 20px;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.badge {
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    border-radius: 30px;
+
+    background: #161b31;
+
+    color: #a99cff;
+
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(45px, 7vw, 80px);
+
+    line-height: 1.05;
+
+    margin-bottom: 25px;
+}
+
+h1 span {
+    color: #7c5cff;
+}
+
+.hero p {
+    color: #a9aec5;
+
+    font-size: 19px;
+
+    line-height: 1.6;
+
+    max-width: 650px;
+
+    margin: auto;
+}
+
+.hero-buttons {
+    margin-top: 35px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+}
+
+.big {
+    padding: 15px 25px;
+
+    font-size: 16px;
+}
+
+.features {
+    padding: 80px 7%;
+
+    text-align: center;
+
+    background: #0c1020;
+}
+
+.features h2 {
+    font-size: 38px;
+
+    margin-bottom: 45px;
+}
+
+.feature-grid {
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.feature {
+    padding: 35px 25px;
+
+    border: 1px solid #20253d;
+
+    border-radius: 18px;
+
+    background: #11162a;
+}
+
+.icon {
+    font-size: 35px;
+
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    margin-bottom: 10px;
+}
+
+.feature p {
+    color: #9ca2ba;
+
+    line-height: 1.5;
+}
+
+footer {
+    padding: 30px;
+
+    text-align: center;
+
+    color: #777d96;
+}
+
+@media (max-width: 700px) {
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .nav-buttons button:first-child {
+        display: none;
+    }
+
+}
