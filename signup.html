@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Create Account - MyHost</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background: #080b18;
+
+            color: white;
+
+            font-family: Arial;
+        }
+
+        .card {
+            width: 100%;
+
+            max-width: 430px;
+
+            padding: 35px;
+
+            background: #11162a;
+
+            border: 1px solid #20253d;
+
+            border-radius: 18px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        p {
+            color: #969db5;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 12px;
+
+            border: 1px solid #2b324c;
+
+            border-radius: 9px;
+
+            background: #0a0f20;
+
+            color: white;
+
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 18px;
+
+            border: 0;
+
+            border-radius: 9px;
+
+            background: #7057ff;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 16px;
+        }
+
+        #message {
+            margin-top: 15px;
+        }
+
+        a {
+            color: #9182ff;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>
+        Create your account
+    </h1>
+
+    <p>
+        Start building websites with MyHost.
+    </p>
+
+
+    <input
+        id="email"
+        type="email"
+        autocomplete="email"
+        placeholder="Email"
+    >
+
+
+    <input
+        id="password"
+        type="password"
+        autocomplete="new-password"
+        placeholder="Password"
+    >
+
+
+    <button onclick="signup()">
+        Create Account
+    </button>
+
+
+    <p id="message"></p>
+
+
+    <p>
+        Already have an account?
+        <a href="login.html">
+            Login
+        </a>
+    </p>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase.js"></script>
+
+
+<script>
+
+async function signup() {
+
+    const email =
+        document.getElementById("email")
+            .value
+            .trim();
+
+    const password =
+        document.getElementById("password")
+            .value;
+
+    const message =
+        document.getElementById("message");
+
+
+    if (!email || !password) {
+
+        message.textContent =
+            "Please enter an email and password.";
+
+        return;
+    }
+
+
+    if (password.length < 6) {
+
+        message.textContent =
+            "Password must be at least 6 characters.";
+
+        return;
+    }
+
+
+    message.textContent =
+        "Creating account...";
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.signUp({
+
+            email: email,
+
+            password: password
+
+        });
+
+
+    if (error) {
+
+        message.textContent =
+            error.message;
+
+        return;
+    }
+
+
+    if (data.session) {
+
+        window.location.href =
+            "dashboard.html";
+
+        return;
+    }
+
+
+    message.textContent =
+        "Account created! Check your email to confirm your account.";
+
+}
+
+</script>
+
+</body>
+
+</html>
