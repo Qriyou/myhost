@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MyHost Editor</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            background: #080b18;
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+            height: 100vh;
+
+            overflow: hidden;
+        }
+
+        header {
+            height: 65px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 18px;
+
+            border-bottom: 1px solid #20253d;
+        }
+
+        .logo {
+            font-size: 21px;
+
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #7057ff;
+        }
+
+        .actions {
+            display: flex;
+
+            gap: 10px;
+        }
+
+        button {
+            border: 0;
+
+            border-radius: 8px;
+
+            padding: 9px 15px;
+
+            color: white;
+
+            background: #171c31;
+
+            cursor: pointer;
+        }
+
+        .publish {
+            background: #7057ff;
+        }
+
+        .editor {
+            height: calc(100vh - 65px);
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .code-area {
+            display: flex;
+
+            flex-direction: column;
+
+            border-right: 1px solid #20253d;
+        }
+
+        .tabs {
+            display: flex;
+
+            border-bottom: 1px solid #20253d;
+        }
+
+        .tab {
+            padding: 12px 18px;
+
+            color: #9298af;
+
+            cursor: pointer;
+        }
+
+        .tab.active {
+            color: white;
+
+            background: #11162a;
+        }
+
+        textarea {
+            flex: 1;
+
+            width: 100%;
+
+            resize: none;
+
+            outline: none;
+
+            border: 0;
+
+            padding: 20px;
+
+            background: #0b0f20;
+
+            color: #e8e9ef;
+
+            font-family: monospace;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+        iframe {
+            width: 100%;
+
+            height: 100%;
+
+            border: 0;
+
+            background: white;
+        }
+
+        @media (max-width: 800px) {
+
+            .editor {
+                grid-template-columns: 1fr;
+            }
+
+            iframe {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<header>
+
+    <div class="logo">
+        My<span>Host</span>
+    </div>
+
+    <div class="actions">
+
+        <button onclick="saveProject()">
+            Save
+        </button>
+
+        <button
+            class="publish"
+            onclick="publishProject()"
+        >
+            🚀 Publish
+        </button>
+
+    </div>
+
+</header>
+
+
+<div class="editor">
+
+    <section class="code-area">
+
+        <div class="tabs">
+
+            <div
+                class="tab active"
+                onclick="switchTab('html')"
+            >
+                HTML
+            </div>
+
+            <div
+                class="tab"
+                onclick="switchTab('css')"
+            >
+                CSS
+            </div>
+
+            <div
+                class="tab"
+                onclick="switchTab('js')"
+            >
+                JavaScript
+            </div>
+
+        </div>
+
+
+        <textarea
+            id="code"
+            spellcheck="false"
+        ></textarea>
+
+    </section>
+
+
+    <iframe
+        id="preview"
+        sandbox="allow-scripts"
+    ></iframe>
+
+</div>
+
+
+<script>
+
+let currentTab = "html";
+
+
+const files = {
+
+    html: `<h1>Hello from MyHost!</h1>
+
+<p>
+    My first website is working!
+</p>`,
+
+    css: `body {
+    font-family: Arial;
+    text-align: center;
+    padding: 50px;
+}`,
+
+    js: `console.log("MyHost website loaded!");`
+
+};
+
+
+function switchTab(tab) {
+
+    files[currentTab] =
+        document.getElementById("code").value;
+
+    currentTab = tab;
+
+    document.getElementById("code").value =
+        files[tab];
+
+    document
+        .querySelectorAll(".tab")
+        .forEach(element => {
+
+            element.classList.remove("active");
+
+        });
+
+    event.target.classList.add("active");
+
+    updatePreview();
+}
+
+
+function updatePreview() {
+
+    files[currentTab] =
+        document.getElementById("code").value;
+
+    const html = `
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<style>
+
+${files.css}
+
+</style>
+
+</head>
+
+<body>
+
+${files.html}
+
+<script>
+
+${files.js}
+
+<\/script>
+
+</body>
+
+</html>
+
+`;
+
+    document.getElementById(
+        "preview"
+    ).srcdoc = html;
+}
+
+
+function saveProject() {
+
+    files[currentTab] =
+        document.getElementById("code").value;
+
+    localStorage.setItem(
+        "myhost_files",
+        JSON.stringify(files)
+    );
+
+    alert("Project saved!");
+
+}
+
+
+function publishProject() {
+
+    saveProject();
+
+    alert(
+        "Publishing will be connected to our real hosting backend next!"
+    );
+
+}
+
+
+document.getElementById("code")
+    .addEventListener(
+        "input",
+        updatePreview
+    );
+
+
+document.getElementById("code").value =
+    files.html;
+
+updatePreview();
+
+</script>
+
+</body>
+
+</html>
