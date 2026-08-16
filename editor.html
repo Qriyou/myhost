@@ -10,7 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>MyHost Editor</title>
+    <title>Editor - MyHost</title>
 
     <style>
 
@@ -46,6 +46,14 @@
             border-bottom: 1px solid #20253d;
         }
 
+        .left {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
         .logo {
             font-size: 21px;
 
@@ -56,10 +64,14 @@
             color: #7057ff;
         }
 
+        #projectName {
+            color: #969db5;
+        }
+
         .actions {
             display: flex;
 
-            gap: 10px;
+            gap: 8px;
         }
 
         button {
@@ -94,12 +106,16 @@
             flex-direction: column;
 
             border-right: 1px solid #20253d;
+
+            min-width: 0;
         }
 
         .tabs {
             display: flex;
 
             border-bottom: 1px solid #20253d;
+
+            background: #0c1020;
         }
 
         .tab {
@@ -171,11 +187,24 @@
 
 <header>
 
-    <div class="logo">
-        My<span>Host</span>
+    <div class="left">
+
+        <div class="logo">
+            My<span>Host</span>
+        </div>
+
+        <div id="projectName">
+            New Website
+        </div>
+
     </div>
 
+
     <div class="actions">
+
+        <button onclick="goDashboard()">
+            Dashboard
+        </button>
 
         <button onclick="saveProject()">
             Save
@@ -201,6 +230,7 @@
 
             <div
                 class="tab active"
+                data-tab="html"
                 onclick="switchTab('html')"
             >
                 HTML
@@ -208,6 +238,7 @@
 
             <div
                 class="tab"
+                data-tab="css"
                 onclick="switchTab('css')"
             >
                 CSS
@@ -215,7 +246,8 @@
 
             <div
                 class="tab"
-                onclick="switchTab('js')"
+                data-tab="javascript"
+                onclick="switchTab('javascript')"
             >
                 JavaScript
             </div>
@@ -239,136 +271,11 @@
 </div>
 
 
-<script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-let currentTab = "html";
+<script src="supabase.js"></script>
 
-
-const files = {
-
-    html: `<h1>Hello from MyHost!</h1>
-
-<p>
-    My first website is working!
-</p>`,
-
-    css: `body {
-    font-family: Arial;
-    text-align: center;
-    padding: 50px;
-}`,
-
-    js: `console.log("MyHost website loaded!");`
-
-};
-
-
-function switchTab(tab) {
-
-    files[currentTab] =
-        document.getElementById("code").value;
-
-    currentTab = tab;
-
-    document.getElementById("code").value =
-        files[tab];
-
-    document
-        .querySelectorAll(".tab")
-        .forEach(element => {
-
-            element.classList.remove("active");
-
-        });
-
-    event.target.classList.add("active");
-
-    updatePreview();
-}
-
-
-function updatePreview() {
-
-    files[currentTab] =
-        document.getElementById("code").value;
-
-    const html = `
-
-<!DOCTYPE html>
-
-<html>
-
-<head>
-
-<style>
-
-${files.css}
-
-</style>
-
-</head>
-
-<body>
-
-${files.html}
-
-<script>
-
-${files.js}
-
-<\/script>
-
-</body>
-
-</html>
-
-`;
-
-    document.getElementById(
-        "preview"
-    ).srcdoc = html;
-}
-
-
-function saveProject() {
-
-    files[currentTab] =
-        document.getElementById("code").value;
-
-    localStorage.setItem(
-        "myhost_files",
-        JSON.stringify(files)
-    );
-
-    alert("Project saved!");
-
-}
-
-
-function publishProject() {
-
-    saveProject();
-
-    alert(
-        "Publishing will be connected to our real hosting backend next!"
-    );
-
-}
-
-
-document.getElementById("code")
-    .addEventListener(
-        "input",
-        updatePreview
-    );
-
-
-document.getElementById("code").value =
-    files.html;
-
-updatePreview();
-
-</script>
+<script src="editor.js"></script>
 
 </body>
 
